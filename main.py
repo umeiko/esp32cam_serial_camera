@@ -3,16 +3,16 @@ import time
 from PIL import Image
 import io
 
-PORT = "COM15"  # 换成正确的串口号
+PORT = "COM15"    # 换成正确的串口号
+BAUDRATE = 500000 # 尝试不同的波特率
 
 def init_camera():
 	"""启动摄像头模块"""
 	cam_con = serial.Serial(PORT)
-	cam_con.baudrate = 500000
-	cam_con.timeout = 2
-	time.sleep(1)
+	cam_con.baudrate = BAUDRATE
+	time.sleep(0.1)
 	cam_con.write(b'e')
-	time.sleep(1)
+	time.sleep(0.1)
 	msg = cam_con.read_all()
 	print(msg)
 	return cam_con
