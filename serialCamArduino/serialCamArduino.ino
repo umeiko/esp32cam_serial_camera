@@ -115,7 +115,11 @@ void loop(){
         if(c == 'e'){
             start_camera();
         }
-        
+        if(c == 't'){
+            fb = esp_camera_fb_get();
+            esp_camera_fb_return(fb);
+            fb=NULL;
+        }
     }
     // vTaskDelay(1000);
 }
